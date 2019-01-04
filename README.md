@@ -24,24 +24,24 @@ This class contains the useful properties and method to serve the helpful functi
 
 **Method:**
 ```
-	/// <summary>
-	/// Method to convert the currency into words.
-	/// </summary>
-	/// <param name="number">Provide amount</param>
-	/// <param name="currency">Provide currency name</param>
-	/// <param name="monetaryUnit">Provide monetary unity name</param>
-	/// <exception cref="ArgumentEmptyException"></exception>
-	/// <exception cref="InvaildNumberStringException"></exception>
-	/// <returns></returns>
-	public static String ConvertCurrencyToWords(String number, string currency = "Rupees", string monetaryUnit = "Paisa")
+  /// <summary>
+  /// Method to convert the currency into words.
+  /// </summary>
+  /// <param name="number">Provide amount</param>
+  /// <param name="currency">Provide currency name</param>
+  /// <param name="monetaryUnit">Provide monetary unity name</param>
+  /// <exception cref="ArgumentEmptyException"></exception>
+  /// <exception cref="InvaildNumberStringException"></exception>
+  /// <returns></returns>
+  public static String ConvertCurrencyToWords(String number, string currency = "Rupees", string monetaryUnit = "Paisa")
 
-	/// <summary>
-	/// Method to convert number into words.
-	/// </summary>
-	/// <param name="number">Provide number.</param>
-	/// <returns></returns>
-	/// <exception cref="ArgumentEmptyException"></exception>
-	public static String ConvertNumberToWords(String number)
+  /// <summary>
+  /// Method to convert number into words.
+  /// </summary>
+  /// <param name="number">Provide number.</param>
+  /// <returns></returns>
+  /// <exception cref="ArgumentEmptyException"></exception>
+  public static String ConvertNumberToWords(String number)
 
   /// <summary>
   /// Static method to get the permutation numbers of sum check value.
