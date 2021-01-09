@@ -180,105 +180,104 @@ String.Decrypt(string passPhrase, string initVector);
 
 This class provides the functionality to encrypt/decrypt the text. This is specially using for Password. Behind the scene, **AT.NetCore.Encipher.Bluefish** library is used.
 
+**Text**
+This class provides the functionality to encrypt/decrypt the text.
+
 **Properties:**
 ```
-  /// <summary>
-  /// Sets the encryption/decryption passpharse.
-  /// </summary>
-  public static string PassPharase { sets; }
-  
-  /// <summary>
-  /// Sets the encryption/decryption init vector value.
-  /// <para>It must contain 16 characters. </para>
-  /// </summary>
-  /// <example>@#ATExamplesk5@@</example>
-  public static string InitVector { sets; }
+/// <summary>
+/// Sets the encryption/decryption passpharse.
+/// </summary>
+public static string PassPharase { sets; }
+
+/// <summary>
+/// Sets the encryption/decryption init vector value.
+/// <para>It must contain 16 characters. </para>
+/// </summary>
+/// <example>@#ATExamplesk5@@</example>
+public static string InitVector { sets; }
+
+/// <summary>
+/// Method to encrypt the given string.
+/// </summary>
+/// <param name="IsRecoverable">Provide bool value to set the plainString will be recoverable or not.</param>
+/// <param name="plainString">String that to be encrypted.</param>
+/// <returns></returns>
+public static string Encrypt(bool IsRecoverable, string plainString)
+
+/// <summary>
+/// Generic method to decrypt the string.
+/// </summary>
+/// <param name="encryptedString">Encrypted string to decrypt.</param>
+/// <returns></returns>
+public static T Decrypt<T>(string encryptedString)
+/// <summary>
+/// Method to decrypt the encrypted string.
+/// </summary>
+/// <param name="encryptedString"></param>
+/// <returns></returns>
+public static string Decrypt(string encryptedString)
 ```
 
-**Methods:**
-```
-  /// <summary>
-  /// Method to encrypt the given string.
-  /// </summary>
-  /// <param name="IsRecoverable">Provide bool value to set the plainString will be recoverable or not.</param>
-  /// <param name="plainString">String that to be encrypted.</param>
-  /// <returns></returns>
-  public static string Encrypt(bool IsRecoverable, string plainString)
-		
-  /// <summary>
-  /// Generic method to decrypt the string.
-  /// </summary>
-  /// <param name="encryptedString">Encrypted string to decrypt.</param>
-  /// <returns></returns>
-  public static T Decrypt<T>(string encryptedString)
-	/// <summary>
-  /// Method to decrypt the encrypted string.
-  /// </summary>
-  /// <param name="encryptedString"></param>
-  /// <returns></returns>
-  public static string Decrypt(string encryptedString)
-```
-
-**3.2. AT.NetCore.Common.Encipher.File**
-
+**File**
 This class provides the functionality to encrypt/decrypt the text file.
 
 **Properties:**
 
 These are the two properties to set the public and private keys for encryption and decryption.
 ```
-  /// <summary>
-  /// Sets the encryption/decryption key. It must be 8 bit.
-  /// </summary>
-  public static string Key { sets; }
-  
-  /// <summary>
-  /// Sets the encryption initialization vector value.
-  /// </summary>
-  public static string InitializationVector { sets; }
+/// <summary>
+/// Sets the encryption/decryption key. It must be 8 bit.
+/// </summary>
+public static string Key { sets; }
+
+/// <summary>
+/// Sets the encryption initialization vector value.
+/// </summary>
+public static string InitializationVector { sets; }
 ```
 **Methods:**
 ```
-  /// <summary>
-  /// Method to encrypt the file.
-  /// </summary>
-  /// <param name="filePath">Provide file location path.</param>
-  /// <param name="filename">Provide filename into the data will be saved in encrypted form.</param>
-  /// <param name="data">Provide the text data object.</param>
-  /// <exception cref="ArgumentNullException"></exception>
-  public static void EncryptAndCreateOrUpdateFile<T>(string filePath, string filename, T data)
-  
-  /// <summary>
-  /// Generic method to decrypt the file.
-  /// </summary>
-  /// <typeparam name="T">Generic type</typeparam>
-  /// <param name="fileLocation">Provide the file which has to be decrypted.</param>
-  /// <returns></returns>
-  public static T Decrypt<T>(string fileLocation)
+/// <summary>
+/// Method to encrypt the file.
+/// </summary>
+/// <param name="filePath">Provide file location path.</param>
+/// <param name="filename">Provide filename into the data will be saved in encrypted form.</param>
+/// <param name="data">Provide the text data object.</param>
+/// <exception cref="ArgumentNullException"></exception>
+public static void EncryptAndCreateOrUpdateFile<T>(string filePath, string filename, T data)
+
+/// <summary>
+/// Generic method to decrypt the file.
+/// </summary>
+/// <typeparam name="T">Generic type</typeparam>
+/// <param name="fileLocation">Provide the file which has to be decrypted.</param>
+/// <returns></returns>
+public static T Decrypt<T>(string fileLocation)
 ```
   
 **4. AT.NetCore.Common.Serialization**
   
 This class provide the JSON serialization and deserialization functionality.
 
-**JSON:**
+**JSON**
 ```
-  /// <summary>
-  /// Generic method to serialize the object.
-  /// </summary>
-  /// <typeparam name="T">Provide type of object.</typeparam>
-  /// <param name="objData">Provide object that to be serialized.</param>
-  /// <returns></returns>
-  public static string Serialize<T>(T objData)
-  /// <summary>
-  /// Generic method to deserialize into the object.
-  /// </summary>
-  /// <typeparam name="T">Provide type of object.</typeparam>
-  /// <param name="data">Provide JSON string to be deserialized.</param>
-  /// <returns></returns>
-  public static T DeSerialize<T>(string data)
+/// <summary>
+/// Generic method to serialize the object.
+/// </summary>
+/// <typeparam name="T">Provide type of object.</typeparam>
+/// <param name="objData">Provide object that to be serialized.</param>
+/// <returns></returns>
+public static string Serialize<T>(T objData)
+/// <summary>
+/// Generic method to deserialize into the object.
+/// </summary>
+/// <typeparam name="T">Provide type of object.</typeparam>
+/// <param name="data">Provide JSON string to be deserialized.</param>
+/// <returns></returns>
+public static T DeSerialize<T>(string data)
 ```
-**XML:**
+**XML**
 ```
 /// <summary>
 /// Static method to serialize the object.
