@@ -6,10 +6,12 @@ This AT.NetCore.Common library provides those kind of common functions/methods a
 ```
 1. AT.NetCore.Common
 	└ PubliceProcedures
-2. AT.NetCore.Common.Convert
+2. AT.NetCore.Common.Extension
 	├ Data
-	└ Timezone
-3. AT.NetCore.Common.Encipher
+	├ Date
+	├ Enum
+	└ String
+3. AT.NetCore.Common.Cryptography
 	├ Text
 	└ File
 4. AT.NetCore.Common.Serialization
@@ -24,167 +26,158 @@ This class contains the useful properties and method to serve the helpful functi
 
 **Method:**
 ```
-  /// <summary>
-  /// Method to convert the currency into words.
-  /// </summary>
-  /// <param name="number">Provide amount</param>
-  /// <param name="currency">Provide currency name</param>
-  /// <param name="monetaryUnit">Provide monetary unity name</param>
-  /// <exception cref="ArgumentEmptyException"></exception>
-  /// <exception cref="InvaildNumberStringException"></exception>
-  /// <returns></returns>
-  public static String ConvertCurrencyToWords(String number, string currency = "Rupees", string monetaryUnit = "Paisa")
+/// <summary>
+/// Method to get the public/external IP address.
+/// <param name="errorMessage">Provide error message holding parameter.</param>
+/// </summary>
+/// <returns></returns>
+public static string GetIPAddress(ref string errorMessage)
 
-  /// <summary>
-  /// Method to convert number into words.
-  /// </summary>
-  /// <param name="number">Provide number.</param>
-  /// <returns></returns>
-  /// <exception cref="ArgumentEmptyException"></exception>
-  public static String ConvertNumberToWords(String number)
+/// <summary>
+/// Method returns the list of timezones.
+/// </summary>
+/// <returns></returns>
+public static ReadOnlyCollection<TimeZoneInfo> GetTimezones()
 
-  /// <summary>
-  /// Static method to get the permutation numbers of sum check value.
-  ///<para>sumCheckValue is the addition of any combination of 2^n. Here n is 1,2,3,4,5,6,.....n </para>
-  /// </summary>
-  /// <param name="sumCheckValue">Provide the sum check value.</param>
-  /// <returns></returns>
-  public static List<long> GetPermutation(long sumCheckValue)
-		
-  /// <summary>
-  /// Method to get the public/external IP address.
-  /// <param name="errorMessage">Provide error message holding parameter.</param>
-  /// </summary>
-  /// <returns></returns>
-  public static string GetIPAddress(ref string errorMessage)
-		
-  /// <summary>
-  /// Extension method to convert the enum value into non pascal string.
-  /// </summary>
-  /// <param name="enu">Provide enum value</param>
-  /// <returns></returns>
-  public static string EnumValueToNonPascalString(this Enum enu)
-		
-  /// <summary>
-  /// Method to read the excel file and return data in table form.
-  /// </summary>
-  /// <param name="path">Provide the excel sheet file.</param> 
-  /// <param name="sheetName">Provide the sheetname</param>
-  /// <param name="hasHeader">Provide the boolean value to check the sheet has first row as header or not.</param>
-  /// <returns></returns>
-  /// <exception cref="FilePathEmptyException"></exception>
-  /// <exception cref="FileNotFoundException"></exception>
-  /// <exception cref="SheetnameEmptyException"></exception>
-  public static DataTable ReadExcelToTable(string path, string sheetName, bool hasHeader = true)
-		
-  /// <summary>
-  /// This method generates the GUID string.
-  /// </summary>
-  /// <returns></returns>
-  public static string GenerateGUID(GUIDExtraction extraction = GUIDExtraction.AlphaNumbers, int? length = 10)
-		
-  /// <summary>
-  /// Static method to extract only numbers from Value string.
-  /// </summary>
-  /// <param name="value">String from which digits will be extracted</param>
-  /// <returns></returns>
-  public static string ExtractDigits(string value)
-		
-  /// <summary>
-  /// Static method to extract only Characters(non-digit) from Value string. 
-  /// </summary>
-  /// <param name="value">String from which alphabets will be extracted</param>
-  /// <returns></returns>
-  public static string ExtractCharacter(string value)
-		
-  /// <summary>
-  /// Method returns the list of timezones.
-  /// </summary>
-  /// <returns></returns>
-  public static ReadOnlyCollection<TimeZoneInfo> GetTimezones()
-		
-  /// <summary>
-  /// Method returns the list of timezones async.
-  /// </summary>
-  /// <returns></returns>
-  public static async Task<ReadOnlyCollection<TimeZoneInfo>> GetTimezonesAsync()
-		
-  /// <summary>
-  /// Static method to get relative folder to create the sub folders.
-  /// <para>If the sub folder is not present then will create it according to Year/Month</para>
-  /// </summary>
-  /// <param name="defaultFolder">Provide default folder</param>
-  /// <example>~/2017/March/Documents. Here /Documents is a default folder.</example>
-  /// <param name="errorMessage">Provide error message holding parameter.</param>
-  /// <param name="subFoldersInDefaultFolder">Provide the sub folder path in side the default folder.</param>
-  /// <returns></returns>
-  public static string CreateFolder(string defaultFolder, ref string errorMessage, string subFoldersInDefaultFolder = null)
-		
-  /// <summary>
-  /// Method to check the credit card number is valid or invalid.
-  /// </summary>
-  /// <param name="cardNumber"></param>
-  /// <returns></returns>
-  public static bool IsValidCreditCard(string cardNumber)
+/// <summary>
+/// Method returns the list of timezones async.
+/// </summary>
+/// <returns></returns>
+public static async Task<ReadOnlyCollection<TimeZoneInfo>> GetTimezonesAsync()
+
+/// <summary>
+/// Method to convert the currency into words.
+/// </summary>
+/// <param name="number">Provide amount</param>
+/// <param name="currency">Provide currency name</param>
+/// <param name="monetaryUnit">Provide monetary unity name</param>
+/// <exception cref="ArgumentEmptyException"></exception>
+/// <exception cref="InvaildNumberStringException"></exception>
+/// <returns></returns>
+public static string ConvertCurrencyToWords(string number, string currency = "Rupees", string monetaryUnit = "Paisa")
+
+/// <summary>
+/// Method to convert number into words.
+/// </summary>
+/// <param name="number">Provide number.</param>
+/// <returns></returns>
+/// <exception cref="ArgumentEmptyException"></exception>
+public static string ConvertNumberToWords(string number)
+
+/// <summary>
+/// This method generates the GUID string.
+/// </summary>
+/// <returns></returns>
+public static string GenerateGUID(GUIDExtraction extraction = GUIDExtraction.AlphaNumbers, int? length = 10)
+
+/// <summary>
+/// Method to read the excel file and return data in table form.
+/// </summary>
+/// <param name="path">Provide the excel sheet file.</param> 
+/// <param name="sheetName">Provide the sheetname</param>
+/// <param name="hasHeader">Provide the boolean value to check the sheet has first row as header or not.</param>
+/// <returns></returns>
+/// <exception cref="FilePathEmptyException"></exception>
+/// <exception cref="FileNotFoundException"></exception>
+/// <exception cref="SheetnameEmptyException"></exception>
+public static DataTable ReadExcelToTable(string path, string sheetName, bool hasHeader = true)
+
+/// <summary>
+/// Static method to get the permutation numbers of sum check value.
+///<para>sumCheckValue is the addition of any combination of 2^n. Here n is 1,2,3,4,5,6,.....n </para>
+/// </summary>
+/// <param name="sumCheckValue">Provide the sum check value.</param>
+/// <returns></returns>
+public static List<long> GetPermutation(long sumCheckValue)
+
+/// <summary>
+/// Method to check the credit card number is valid or invalid.
+/// </summary>
+/// <param name="cardNumber"></param>
+/// <returns></returns>
+public static bool IsValidPaymentCardNumber(string cardNumber)
+
 ```
 
-**2.1 AT.NetCore.Common.Convert.Data**
+**2. AT.NetCore.Common.Extension**
 
-This class provides the functionality for data conversion.
-
-**Methods:**
+**Data:**
 ```
-  /// <summary>
-  /// Method to convert the generic object into bytes.
-  /// </summary>
-  /// <typeparam name="T"></typeparam>
-  /// <param name="obj"></param>
-  /// <returns></returns>
-  public static byte[] ToBytes<T>(T obj)
-		
-  /// <summary>
-  /// Method to convert the data bytes into the generic object.
-  /// </summary>
-  /// <typeparam name="T"></typeparam>
-  /// <param name="data"></param>
-  /// <returns></returns>
-  public static T ToObject<T>(byte[] data)
-		
-  /// <summary>
-  /// Generic Static method to create the clone of object.
-  /// </summary>
-  /// <typeparam name="T">Provide the object type.</typeparam>
-  /// <param name="t">Provide the object type</param>
-  /// <returns></returns>
-  public static T CreateClone<T>(T t)
+/// Extension method to compare the two object and return boolean value.
+obj.EqualTo(toCompare)
+  
+/// Extension method to check the object is blank or not.
+obj.IsBlank();
+
+/// Extension method to create the structural clone of object.
+obj.CreateClone<T>();
+
+/// Extension method to convert generic object into bytes.
+obj.ToBytes<T>();
+
+/// Extension method that map/convert the bytes data into the specified generic type.
+byte[].ToObject<T>();
+
+/// Extension Method to map the object.
+obj.ToMap<T>();
+
+/// Extension method to map the data reader with list.
+DbDataReader.MapToList<T>();
+
+/// Extension method to map the database table with list.
+DataTable.MapToList<T>();
+
+```
+**Date:**
+```
+/// Extension method to returns the first day of the month.
+DateTime.FirstDayOfMonth();
+
+/// Extension method to returns the last day of month.
+DateTime.LastdayOfMonth();
+
+/// Extension method returns the first day of the week.
+DateTime.FirstDayOfWeek();
+
+/// Extension method returns the last day of the week.
+DateTime.LastDayOfWeek();
+
+/// Extension method returns the first day of next month.
+DateTime.FirstDayOfNextMonth();
+
+> How to get last date of next month?
+DateTime.FirstDayOfNextMonth().LastdayOfMonth();
+
+```
+**Enum:**
+```
+/// Extension method to convert the string into generic enum.
+string.ToEnum<T>();
+
+/// Extension method to convert the enum value into non pascal string.
+enum.ToPascalWordSeparatedString();
+```
+**String:**
+```
+/// Extension method shuffle the characters of string.
+String.Shuffle();
+
+/// Extension method to extract only numbers from string.
+String.ExtractDigits();
+
+/// Extension method to extract only Characters(A-Z/a-z) from string. 
+String.ExtractAlphabets();
+
+/// Extension method to encrypt the string.
+String.Encrypt(string passPhrase, string initVector);
+
+/// Extension method to decrypt the encrypted string.
+String.Decrypt(string passPhrase, string initVector);
 ```
 
-**2.2 AT.NetCore.Common.Convert.Timezone**
+**3. AT.NetCore.Common.Cryptography**
 
-The class provides the functionality for timezone date conversion
-
-**Methods:**
-```
-  /// <summary>
-  /// Static method to convert the datetime into UTC datetime.
-  /// </summary>
-  /// <param name="value">Convertible datetime</param>
-  /// <param name="timeZone">Timezone name</param>
-  /// <returns></returns>
-  public static DateTime? ConvertToUTC(DateTime value, string timeZone = null)
-		
-  /// <summary>
-  /// Static metod to convert the UTC datetime into system datetime.
-  /// </summary>
-  /// <param name="value">Convertible datetime</param>
-  /// <param name="timeZone">Timezone name</param>
-  /// <returns></returns>
-  public static DateTime? ConvertFromUTC(DateTime value, string timeZone = null)
-```
-
-**3.1. AT.NetCore.Common.Encipher.Text**
-
-This class provides the functionality to encrypt/decrypt the text. This is specially using for Password. Behind the scene, **MD5 and Rijndael algorithm** are used.
+This class provides the functionality to encrypt/decrypt the text. This is specially using for Password. Behind the scene, **AT.NetCore.Encipher.Bluefish** library is used.
 
 **Properties:**
 ```
@@ -284,5 +277,3 @@ This class provide the JSON serialization and deserialization functionality.
   /// <returns></returns>
   public static T DeSerialize<T>(string data)
 ```
-
-**NOTE :** This library fetch user's public IP for statistics and analysis purpose.
