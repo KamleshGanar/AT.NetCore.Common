@@ -15,7 +15,8 @@ This AT.NetCore.Common library provides those kind of common functions/methods a
 	├ Text
 	└ File
 4. AT.NetCore.Common.Serialization
-	└ JSON
+	├ JSON
+	└ XML
 ```
 
 ## In Detail
@@ -27,26 +28,26 @@ This class contains the useful properties and method to serve the helpful functi
 **Method:**
 ```
 /// <summary>
-/// Method to get the public/external IP address.
+/// Static method to get the public/external IP address.
 /// <param name="errorMessage">Provide error message holding parameter.</param>
 /// </summary>
 /// <returns></returns>
-public static string GetIPAddress(ref string errorMessage)
+string GetIPAddress(ref string errorMessage)
 
 /// <summary>
-/// Method returns the list of timezones.
+/// Static method returns the list of timezones.
 /// </summary>
 /// <returns></returns>
-public static ReadOnlyCollection<TimeZoneInfo> GetTimezones()
+ReadOnlyCollection<TimeZoneInfo> GetTimezones()
 
 /// <summary>
-/// Method returns the list of timezones async.
+/// Static method returns the list of timezones async.
 /// </summary>
 /// <returns></returns>
-public static async Task<ReadOnlyCollection<TimeZoneInfo>> GetTimezonesAsync()
+async Task<ReadOnlyCollection<TimeZoneInfo>> GetTimezonesAsync()
 
 /// <summary>
-/// Method to convert the currency into words.
+/// Static method to convert the currency into words.
 /// </summary>
 /// <param name="number">Provide amount</param>
 /// <param name="currency">Provide currency name</param>
@@ -54,24 +55,24 @@ public static async Task<ReadOnlyCollection<TimeZoneInfo>> GetTimezonesAsync()
 /// <exception cref="ArgumentEmptyException"></exception>
 /// <exception cref="InvaildNumberStringException"></exception>
 /// <returns></returns>
-public static string ConvertCurrencyToWords(string number, string currency = "Rupees", string monetaryUnit = "Paisa")
+string ConvertCurrencyToWords(string number, string currency = "Rupees", string monetaryUnit = "Paisa")
 
 /// <summary>
-/// Method to convert number into words.
+/// Static method to convert number into words.
 /// </summary>
 /// <param name="number">Provide number.</param>
 /// <returns></returns>
 /// <exception cref="ArgumentEmptyException"></exception>
-public static string ConvertNumberToWords(string number)
+string ConvertNumberToWords(string number)
 
 /// <summary>
-/// This method generates the GUID string.
+/// Static method generates the GUID string.
 /// </summary>
 /// <returns></returns>
-public static string GenerateGUID(GUIDExtraction extraction = GUIDExtraction.AlphaNumbers, int? length = 10)
+string GenerateGUID(GUIDExtraction extraction = GUIDExtraction.AlphaNumbers, int? length = 10)
 
 /// <summary>
-/// Method to read the excel file and return data in table form.
+/// Static method to read the excel file and return data in table form.
 /// </summary>
 /// <param name="path">Provide the excel sheet file.</param> 
 /// <param name="sheetName">Provide the sheetname</param>
@@ -80,7 +81,7 @@ public static string GenerateGUID(GUIDExtraction extraction = GUIDExtraction.Alp
 /// <exception cref="FilePathEmptyException"></exception>
 /// <exception cref="FileNotFoundException"></exception>
 /// <exception cref="SheetnameEmptyException"></exception>
-public static DataTable ReadExcelToTable(string path, string sheetName, bool hasHeader = true)
+DataTable ReadExcelToTable(string path, string sheetName, bool hasHeader = true)
 
 /// <summary>
 /// Static method to get the permutation numbers of sum check value.
@@ -88,14 +89,14 @@ public static DataTable ReadExcelToTable(string path, string sheetName, bool has
 /// </summary>
 /// <param name="sumCheckValue">Provide the sum check value.</param>
 /// <returns></returns>
-public static List<long> GetPermutation(long sumCheckValue)
+List<long> GetPermutation(long sumCheckValue)
 
 /// <summary>
-/// Method to check the credit card number is valid or invalid.
+/// Static method to check the credit card number is valid or invalid.
 /// </summary>
 /// <param name="cardNumber"></param>
 /// <returns></returns>
-public static bool IsValidPaymentCardNumber(string cardNumber)
+bool IsValidPaymentCardNumber(string cardNumber)
 
 ```
 
@@ -256,11 +257,11 @@ These are the two properties to set the public and private keys for encryption a
   public static T Decrypt<T>(string fileLocation)
 ```
   
-**4.1. AT.NetCore.Common.Serialization.JSON**
+**4. AT.NetCore.Common.Serialization**
   
 This class provide the JSON serialization and deserialization functionality.
 
-**Method:**
+**JSON:**
 ```
   /// <summary>
   /// Generic method to serialize the object.
@@ -276,4 +277,31 @@ This class provide the JSON serialization and deserialization functionality.
   /// <param name="data">Provide JSON string to be deserialized.</param>
   /// <returns></returns>
   public static T DeSerialize<T>(string data)
+```
+**XML:**
+```
+/// <summary>
+/// Static method to serialize the object.
+/// </summary>
+/// <param name="data">Provide the object of data that needs to be serialize in XML.</typeparam>
+/// <param name="filename">Provide the filename into which the xml will be written.</param>
+/// <param name="preFix">Provide any xml prefix.</param>
+/// <param name="nameSpace">Provide namespace</param>
+void Serialize<T>(object data, string filename, string preFix, string nameSpace= "http://www.sitemaps.org/schemas/sitemap/0.9")
+					  
+/// <summary>
+/// Static Method to de-serialize into the object.
+/// </summary>
+/// <typeparam name="T">Provide type of object.</typeparam>
+/// <param name="filename">Provide XML filename</param>
+/// <returns></returns>
+T DeSerialize<T>(string filename)
+
+/// <summary>
+/// Static method to de-serialize the memory stream xml data.
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="memoryStream"></param>
+/// <returns></returns>
+static T DeSerialize<T>(MemoryStream memoryStream)
 ```
