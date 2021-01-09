@@ -2,6 +2,10 @@
 In the programming world the developers must have to note some common functions/methods into somewhere in mind or maintain notebook. 
 This AT.NetCore.Common library provides those kind of common functions/methods and it reduces 30% developers coding time. I am not saying that AT.NetCore.Common libary has provided very extensive methods. In fact, the small methods that are regularly useful in our day-to-day coding.
 
+# Nuget Package
+[![NuGet version (AT.NetCore.Common)](https://img.shields.io/nuget/v/AT.NetCore.Common.svg?style=flat-square)](https://www.nuget.org/packages/AT.NetCore.Common/)
+
+
 ###### AT.NetCore.Common has following namespaces underwhich static classes are defined.
 ```
 1. AT.NetCore.Common
